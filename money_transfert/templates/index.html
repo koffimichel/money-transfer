@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Money Transfer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1><i class="fas fa-money-bill-wave"></i> Global Transfer</h1>
+                <p>Send money to your family with low fees</p>
+            </div>
+            
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="amount">Amount to Send (USD)</label>
+                    <div class="input-group">
+                        <span class="input-icon">$</span>
+                        <input type="number" id="amount" placeholder="Enter amount" min="1" step="1">
+                    </div>
+                </div>
+                
+                <button id="calculate-btn" class="btn-primary">
+                    <i class="fas fa-calculator"></i> Calculate Transfer
+                </button>
+                
+                <div id="results" class="results-container hidden">
+                    <div class="result-item">
+                        <span>Transfer Fee (2%)</span>
+                        <span id="fee-amount">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Total Amount</span>
+                        <span id="total-amount">-</span>
+                    </div>
+                    <div class="result-item highlight">
+                        <span>Recipient Gets</span>
+                        <span id="receiving-amount">-</span>
+                    </div>
+                    <div class="exchange-rate">
+                        <i class="fas fa-info-circle"></i> Exchange rate: <span id="exchange-rate">1 USD = 655 CFA</span>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="confirm-btn" class="btn-success">
+                            <i class="fas fa-check-circle"></i> Confirm Transfer
+                        </button>
+                        <button id="cancel-btn" class="btn-outline">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="confirmation" class="confirmation hidden">
+                    <div class="success-animation">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Transfer Successful!</h3>
+                    <p>Your money is on its way to your family.</p>
+                    <button id="new-transfer" class="btn-outline">
+                        <i class="fas fa-redo"></i> New Transfer
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <p><i class="fas fa-shield-alt"></i> 256-bit SSL Secure Transfer</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
